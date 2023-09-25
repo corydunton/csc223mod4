@@ -1,6 +1,9 @@
 package csc223_cdunton_mod4;
 
 /**
+ * Author: Cory Dunton
+ * Date: 9/21/2023
+ * 
  * Coin Change Calculator Assignment
  *
  * Given a valid monetary double value, the objective of this assignment is to
@@ -25,11 +28,38 @@ public class CoinChangeCalculator {
 	 * @return An array representing [quarters, dimes, nickels, pennies].
 	 */
 	public int[] calculateChange(double amount) {
-		// TODO: Implement this method
-		return null;
+	    // TODO: Implement this method
+		int cents =(int) ((amount % 1) * 100);
+
+	    // Calculate the number of each coin needed to make the leftover change
+		int quarters = cents / 25;
+		cents %= 25;
+		
+		int dimes = cents / 10;
+		cents %= 10;
+		
+		int nickels = cents / 5;
+		cents %= 5;
+		
+		int pennies = cents;
+		
+		// Create and return an array containing [quarters, dimes, nickels, pennies]
+		int[] change = {quarters, dimes, nickels, pennies};
+		return change;
 	}
 
 	public static void main(String[] args) {
 		// Optional: You can use this main method for your own testing
+        CoinChangeCalculator calculator = new CoinChangeCalculator();
+
+        // Example: Calculate change for $3.48
+        double amount = 3.48;
+        int[] change = calculator.calculateChange(amount);
+
+        // Print the result
+        System.out.println("Quarters: " + change[0]);
+        System.out.println("Dimes: " + change[1]);
+        System.out.println("Nickels: " + change[2]);
+        System.out.println("Pennies: " + change[3]);
 	}
 }
